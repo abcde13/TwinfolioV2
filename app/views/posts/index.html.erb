@@ -1,0 +1,8 @@
+
+
+<div id="nav_connect"></div>
+<% @posts.each do |p| %>
+	<%= render partial: "post_layout", locals: {:post => p} %>
+<% end %>
+
+

@@ -1,0 +1,23 @@
+
+<nav id="navbar">
+	<div class="row" id="nav_header">
+		<div class = "col-2" id="nav_link">
+			NAV
+		</div>
+		<div class = "col-9" id="nav_title">
+			Twinfolio
+		</div>
+		<div id="nav_title_full">
+			Twinfolio: For Whom My Knee Tolls
+		</div>
+	</div>
+	<div class="row" id="nav_container">
+		<ul>
+			<li><%= link_to "Home", root_path %></li>
+			<li><%= link_to "Joraaver's posts", joraaver_posts_path %></li>
+			<li><%= link_to "Suchaaver's posts", suchaaver_posts_path %></li>
+			<li><%= link_to "About/Contact us", contacts_new_path %></li>
+			<li><%= link_to "Other", other_path %></li>
+		</ul>
+	</div>
+</nav>
