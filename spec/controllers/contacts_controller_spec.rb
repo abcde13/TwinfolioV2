@@ -9,11 +9,21 @@ describe ContactsController do
 		end
 	end
 
-	describe "CREATE new" do
-		pending("First work on contact create. then work on email send!")
-		#before(@contact = Contact.create!(:to
-		it "should send email" do
+	describe "POST #create" do
+		subject { post :create, :contact => {:name => "Joraaver", :to => "s", :from => "j", :subject => "check", :body => "test"}}
+		context "has valid attributes" do
+			it "redirects to new page" do
+				expect(subject).to redirect_to(:action => :new)
+			end
 		end
+		
+		context "has bad attributes" do
+			it "renders same page with errors" do
+				post :create, :contact => {:name => nil, :to => nil, :from => nil, :subject => nil, :body => nil}	
+				response.should render_template(:new)
+			end
+		end
+				
 	end
 
 		
