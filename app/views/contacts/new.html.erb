@@ -7,3 +7,48 @@
 <div class="about_box">
 	I'm Joraaver
 </div>
+<div class = "post_container">
+	<div class = "row" id = "post_title">
+		<li id="wrap_left"></li>
+		<li id="title_text"><strong>Contact us!</strong></li>
+		<li id="wrap_right"></li>
+	</div>
+	<div class = "post_details">
+		<% flash.each do |key, value| %>
+			<div class="alert alert-<%= key %>"><%= value %></div>
+	      	<% end %>
+		<ul>  
+	   		<% @contact.errors.full_messages.each do |msg| %>  
+	    			<li><%= msg %></li>  
+		    	<% end %>  
+		</ul>  
+				
+		<%= form_for(@contact) do |f| %>
+			<div class="field">
+				<%= f.text_field :name, :placeholder => "Name" %>
+			</div>
+			<div class="field">
+				<%= f.email_field :from, :placeholder => "From (e.g. john.smith@gmail.com)" %>
+			</div>
+			<div class="field">
+				<div class="col-1">
+					To:
+				</div> 
+				<div class="col-11">
+					<%= f.select :to, options_for_select(%w[Suchaaver Joraaver Both]) %>	
+				</div>
+			</div>
+			<div class="field">
+				<%= f.text_area :subject, :placeholder => "Subject" %>
+			</div>
+			<div class="field">
+				<%= f.text_area :body, :placeholder => "Body" %>
+			</div>
+			<div class="actions">
+				<%= f.submit "Send Mail" %>
+			</div>
+		<% end %>
+		</div>
+	</div>
+</div>
+

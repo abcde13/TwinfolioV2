@@ -1,6 +1,6 @@
 TwinFolioV2::Application.routes.draw do
 
-  get "contacts/new"
+	resources :contacts
 	resources :posts do
 		collection do
 			get 'joraaver'

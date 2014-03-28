@@ -8,4 +8,5 @@ describe "contacts/new.html.erb" do
 		rendered.should include("I'm Suchaaver")
 		rendered.should include("I'm Joraaver")
 	end
+
 end
