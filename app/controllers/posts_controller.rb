@@ -13,6 +13,10 @@ class PostsController < ApplicationController
 		@post = Post.find(params[:id])
 	end
 
+  def new
+    @post = Post.new()
+  end
+
 	def joraaver
 		@posts = Post.where(:author => "Joraaver Chahal")
 	end
