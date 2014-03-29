@@ -1,0 +1,19 @@
+<div>
+		<% flash.each do |key, value| %>
+			<div class="alert alert-<%= key %>"><%= value %></div>
+	  <% end %>
+		<%= form_for(@post) do |f| %>
+			<div class="field">
+				<%= f.text_field :title, :placeholder => "Title" %>
+			</div>
+			<div class="field">
+				<%= f.text_field :author, :placeholder => "Author" %>
+			</div>
+			<div class="field">
+				<%= f.text_area :text, :placeholder => "Text" %>
+			</div>
+			<div class="actions">
+				<%= f.submit "Publish Post" %>
+			</div>
+		<% end %>
+</div>

@@ -13,6 +13,10 @@ class PostsController < ApplicationController
 		@post = Post.find(params[:id])
 	end
 
+	def edit
+		@post = Post.find(params[:id])
+	end
+
   def new
     @post = Post.new()
   end
@@ -22,7 +26,8 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to new_post_path, :flash => {success: "Post has been successfully published."}
     else 
-      render :action => :new, :flash => {failure: "The post is missing some details. Please fill everything in."}
+      flash.now[:failure] =  "The post is missing some details. Please fill everything in."
+      render :action => :new
     end
   end 
 
@@ -32,6 +37,8 @@ class PostsController < ApplicationController
 	def suchaaver
 		@posts = Post.where(:author => "Suchaaver Chahal")
 	end
+
+  private 
 
 	def post_params
 		params.require(:post).permit(:title, :author,:text)
