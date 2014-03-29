@@ -7,7 +7,7 @@ class ContactsController < ApplicationController
 	def create
 		@contact = Contact.new(contact_params)
 		if @contact.save
-		
+			Notifier.send_mail(@contact).deliver
 			redirect_to new_contact_path, :flash => {success:  "An email has been sent. Thanks for dropping by!"}
 		else
 			flash.now[:failure] = "You need to fill out a little more information."

@@ -10,10 +10,23 @@ describe ContactsController do
 	end
 
 	describe "POST #create" do
-		subject { post :create, :contact => {:name => "Joraaver", :to => "s", :from => "j", :subject => "check", :body => "test"}}
+		before(:each) do
+			ActionMailer::Base.delivery_method = :test
+			ActionMailer::Base.perform_deliveries = true
+			ActionMailer::Base.deliveries = []
+		end
+		after(:each) do
+			ActionMailer::Base.deliveries.clear
+		end
+
+		subject { post :create, :contact => {:name => "Joraaver", :to => "machspeeds@gmail.com", :from => "test@example.com", :subject => "check", :body => "test"}}
 		context "has valid attributes" do
 			it "redirects to new page" do
 				expect(subject).to redirect_to(:action => :new)
+			end
+			it "sends an email to us" do
+				post :create, :contact => {:name => "Joraaver", :to => "machspeeds@gmail.com", :from => "test@example.com", :subject => "check", :body => "test"}
+				ActionMailer::Base.deliveries.first.to.should eq(['machspeeds@gmail.com'])
 			end
 		end
 		
