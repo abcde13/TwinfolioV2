@@ -3,7 +3,7 @@ require 'spec_helper'
 describe PostsController do
 	render_views
 
-  describe "Post #new" do
+  describe "GET #new" do
     it "assigns a new empty Post to @post" do
       get :new
       assigns(:post).author.should eq(nil)
@@ -14,14 +14,18 @@ describe PostsController do
     end
   end
 
-  describe "Post #create" do
+  describe "POST #create" do
+		subject { post :create, :post => {:author => "Joraaver", :text => "RSPEC Test", :title => "check" }}
     context "with valid attributes" do
-      it "saves the new post in the DB"
-      it "re-renders the posts/new template"
+      it "redirects to the posts/new template" do
+				expect(subject).to redirect_to(:action => :new)
+      end
     end
     context "with invalid attributes" do
-      it "fails to save the post in the DB"
-      it "re-renders the posts/new template (with an ERROR)"
+      it "re-renders the posts/new template (with an ERROR)" do
+		    post :create, :post => {:author => nil, :text => nil, :title => nil }  
+        response.should render_template(:new)
+      end
     end
 
   end
