@@ -31,6 +31,24 @@ class PostsController < ApplicationController
     end
   end 
 
+  def update
+    @post = Post.find(params[:id])
+    if @post.update_attributes(post_params)
+      redirect_to post_path(@post), notice: "Post has been successfully updated."
+    else 
+      flash.now[:failure] =  "The post is missing some details. Please fill everything in."
+      render :action => :edit
+    end
+  end
+
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+   
+    redirect_to posts_path, notice: "Post successfully deleted."
+ 
+  end
+
 	def joraaver
 		@posts = Post.where(:author => "Joraaver Chahal")
 	end

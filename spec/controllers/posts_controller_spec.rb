@@ -67,7 +67,31 @@ describe PostsController do
 	end
 
   describe "PATCH #update" do
-    it "updates the post"
+		before{@post = Post.create!(:title => "Day 1", :author => "Suchaaver", :text => "alma mater")}
+    context "with valid attributes" do
+      it "redirects to updated posts#show" do
+        @attr = { :title => "different", :author => "Joraaver"}
+        patch :update, :id =>  @post.id, :post => @attr
+        @post.reload
+        expect(response).to redirect_to(post_path(assigns[:post])) 
+      end
+    end  
+    context "with invalid attributes" do
+      it "re-renders posts" do
+        @attr = { :title => "nil", :author => "Joraaver"}
+        patch :update, :id =>  @post.id, :post => @attr
+        expect(response).to redirect_to(post_path(assigns[:post])) 
+      end
+    end  
+  end
+
+  describe "DELETE #destroy" do
+		before{@post = Post.create!(:title => "Day 1", :author => "Suchaaver", :text => "alma mater")}
+    it "redirects to the posts#index" do
+      delete :destroy, :id => @post.id
+      expect(response).to redirect_to(posts_path)
+    end
+ 
   end
 
 	describe "GET #joraaver" do
