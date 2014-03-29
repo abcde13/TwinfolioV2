@@ -1,9 +1,9 @@
 
 
 <div class = "post_container">
-	<div class = "row" id = "post_title">
+	<div class = "row" id = "post_banner">
 		<li id="wrap_left"></li>
-		<li id="title_text"><%= post.title %></li>
+		<li id="title_text"><%= link_to post.title, post_path(post) %></li>
 		<li id="wrap_right"></li>
 	</div>
 	<div class = "post_details">

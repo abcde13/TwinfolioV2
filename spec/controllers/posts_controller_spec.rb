@@ -54,6 +54,22 @@ describe PostsController do
 		end
 	end
 
+	describe "GET #edit" do
+		before{@post = Post.create!(:title => "Day 1", :author => "Suchaaver", :text => "alma mater")}
+		it "recieves 200 OK" do
+			get :edit, id: @post
+			expect(response.status).to eq(200)
+		end
+		it "has navigation" do
+			get :show, id: @post
+			response.should render_template "layouts/_nav"
+		end
+	end
+
+  describe "PATCH #update" do
+    it "updates the post"
+  end
+
 	describe "GET #joraaver" do
 		it "recieves 200 OK" do
 			get :joraaver
