@@ -25,8 +25,8 @@ describe ContactsController do
 				expect(subject).to redirect_to(:action => :new)
 			end
 			it "sends an email to us" do
-				post :create, :contact => {:name => "Joraaver", :to => "machspeeds@gmail.com", :from => "test@example.com", :subject => "check", :body => "test"}
-				ActionMailer::Base.deliveries.first.to.should eq(['machspeeds@gmail.com'])
+				post :create, :contact => {:name => "Joraaver", :to => "Joraaver", :from => "test@example.com", :subject => "check", :body => "test"}
+				ActionMailer::Base.deliveries.first.to.should eq(['joraaverchahal@gmail.com'])
 			end
 		end
 		
