@@ -9,6 +9,9 @@ gem 'sqlite3'
 # Testing
 gem 'rspec'
 
+# For encryption
+gem 'bcrypt-ruby', :require => 'bcrypt'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
