@@ -1,5 +1,6 @@
 TwinFolioV2::Application.routes.draw do
 
+#	resources :users
 	resources :contacts
 	resources :posts do
 		collection do
