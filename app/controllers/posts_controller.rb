@@ -10,11 +10,6 @@ class PostsController < ApplicationController
 	end
 
 	def show
-		if session[:user_id] == nil
-			flash[:notice] = "Permission Denied"
-			redirect_to posts_path
-			return
-		end
 		@post = Post.find(params[:id])
 	end
 
