@@ -7,6 +7,12 @@
 		<li id="wrap_right"></li>
 	</div>
 	<div class = "post_details">
+		<% if current_user %>
+			<div class = "row">
+				Edit
+			</div>
+		<% end %>
+			
 		<div class = "row">
 			<%= post.author %>
 		</div>

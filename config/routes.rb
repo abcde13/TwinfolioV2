@@ -1,6 +1,8 @@
 TwinFolioV2::Application.routes.draw do
 
-#	resources :users
+	get 'login' => 'sessions#new', :as => 'login'
+	get 'logout' => 'sessions#destroy', :as => 'logout'
+	resources :sessions
 	resources :contacts
 	resources :posts do
 		collection do
