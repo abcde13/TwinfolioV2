@@ -2,6 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import 'styles';
+
 $title_padding: 5px;
 		
 #nav_connect{
@@ -11,7 +13,7 @@ $title_padding: 5px;
 }
 
 #post_banner{
-	background-color: #D4D4D4; 
+	background-color: $blue-hue; 
 	border-radius: 10px 10px 0  0 ;
 	margin: 0 5px 0 5px;
 	padding: $title_padding;
@@ -36,7 +38,7 @@ li#wrap_left:before {
  	display: block;
 	margin-top: $title_padding;
 	margin-left: -$title_padding;
- 	border: 1.5em solid #D4D4D4;
+ 	border: 1.5em solid $blue-hue;
 	border-radius: 20px;
  	z-index: -1;
 	
@@ -48,7 +50,7 @@ li#wrap_right:after {
 	float: left;
 	margin-top: $title_padding;
 	margin-left: -$title_padding * 8.7;
- 	border: 1.5em solid #D4D4D4;
+ 	border: 1.5em solid $blue-hue;
 	border-radius: 20px ;
  	z-index: -1;
 }
