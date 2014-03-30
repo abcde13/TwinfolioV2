@@ -3,16 +3,6 @@ require 'spec_helper'
 describe PostsController do
 	render_views
 
-  describe "GET #new" do
-    it "assigns a new empty Post to @post" do
-      get :new
-      assigns(:post).author.should eq(nil)
-    end
-    it "renders the posts/new template" do
-      get :new
-      response.should render_template "posts/new"
-    end
-  end
 
   describe "POST #create" do
 		subject { post :create, :post => {:author => "Joraaver", :text => "RSPEC Test", :title => "check" }}
@@ -41,58 +31,6 @@ describe PostsController do
 			response.should render_template "layouts/_nav"
 		end
 	end
-	
-	describe "GET #show" do
-		before{@post = Post.create!(:title => "Day 1", :author => "Suchaaver", :text => "alma mater")}
-		it "recieves 200 OK" do
-			get :show, id: @post
-			expect(response.status).to eq(200)
-		end
-		it "has navigation" do
-			get :show, id: @post
-			response.should render_template "layouts/_nav"
-		end
-	end
-
-	describe "GET #edit" do
-		before{@post = Post.create!(:title => "Day 1", :author => "Suchaaver", :text => "alma mater")}
-		it "recieves 200 OK" do
-			get :edit, id: @post
-			expect(response.status).to eq(200)
-		end
-		it "has navigation" do
-			get :show, id: @post
-			response.should render_template "layouts/_nav"
-		end
-	end
-
-  describe "PATCH #update" do
-		before{@post = Post.create!(:title => "Day 1", :author => "Suchaaver", :text => "alma mater")}
-    context "with valid attributes" do
-      it "redirects to updated posts#show" do
-        @attr = { :title => "different", :author => "Joraaver"}
-        patch :update, :id =>  @post.id, :post => @attr
-        @post.reload
-        expect(response).to redirect_to(post_path(assigns[:post])) 
-      end
-    end  
-    context "with invalid attributes" do
-      it "re-renders posts" do
-        @attr = { :title => "nil", :author => "Joraaver"}
-        patch :update, :id =>  @post.id, :post => @attr
-        expect(response).to redirect_to(post_path(assigns[:post])) 
-      end
-    end  
-  end
-
-  describe "DELETE #destroy" do
-		before{@post = Post.create!(:title => "Day 1", :author => "Suchaaver", :text => "alma mater")}
-    it "redirects to the posts#index" do
-      delete :destroy, :id => @post.id
-      expect(response).to redirect_to(posts_path)
-    end
- 
-  end
 
 	describe "GET #joraaver" do
 		it "recieves 200 OK" do
@@ -116,6 +54,17 @@ describe PostsController do
 			assert_select("a[href=/other]","Other")
 			assert_select("a[href=/]","Home")
 			assert_select("a[href=/contacts/new]","About/Contact us")
+		end
+	end
+	describe "not logged in" do
+		before {@post  = Post.create(:author => 'Joraaver', :text => 'test', :title => 'Day 3')  }
+		it "should not be able to access posts/new" do
+			get :new
+			response.should redirect_to posts_path
+		end
+		it "should not be able to access posts/x/edit" do
+			get :edit, id: @post
+			response.should redirect_to posts_path
 		end
 	end
 
