@@ -9,7 +9,7 @@
 	<div class = "post_details">
 		<% if current_user %>
 			<div class = "row">
-				Edit
+				<%= link_to 'Edit', edit_post_path(post) %>
 			</div>
 		<% end %>
 			
