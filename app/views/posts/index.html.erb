@@ -4,8 +4,18 @@
 <% end %>
 
 <div id="nav_connect"></div>
-<% @posts.each do |p| %>
-	<%= render partial: "post_layout", locals: {:post => p} %>
-<% end %>
+<div class = 'row'>
+	<div class = 'col-2'>
+		<br />
+	</div>
+	<div class = 'col-8'>
+	<% @posts.each do |p| %>
+		<%= render partial: "post_layout", locals: {:post => p} %>
+	<% end %>
+	</div>
+	<div class = 'col-2'>
+		<div class = 'to_top'>hi</div>
+	</div>
+</div>
 
 

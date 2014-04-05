@@ -1,0 +1,21 @@
+
+@import 'styles';
+
+.footer {
+	background-color: $blue-hue;
+	bottom: 0;
+	width: 100%;
+	text-align: center;
+	color: white;
+	padding: 5px 0 5px 0;
+	position: relative;
+	
+	.meta_link{
+		text-align: left;
+	}
+}
+
+@media screen and(max-width: 800px){
+.footer{
+	display: none;
+}}

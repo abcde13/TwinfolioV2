@@ -3,4 +3,40 @@
   <div class="alert alert-<%= key %>"><%= value %></div>
 <% end %>
 <div id="nav_connect"></div>
-<%= render partial: "post_layout", locals: {:post => @post} %>
+<div class = 'row'>
+	<div class = 'col-2 margins'>
+		<% if (previous_post(@post.id) == false) %>	
+			
+			<br />
+		<% else %>
+			<div class = 'row'>
+				<%= previous_post(@post.id).title%>
+			</div>
+			<div class = 'row left'>
+				
+			</div>
+			<div class = 'row'>
+				Previous by <%= previous_post(@post.id).author.split(" ").first%>
+			</div>
+		<% end %>
+	</div>
+	<div class = 'col-8'>
+		<%= render partial: "post_layout", locals: {:post => @post} %>
+	</div>
+	<div class = 'col-2 margins'>
+		<% if (next_post(@post.id) == false) %>	
+			
+			<br />
+		<% else %>
+			<div class = 'row'>
+				<%= next_post(@post.id).title%>
+			</div>
+			<div class = 'row right'>
+				
+			</div>
+			<div class = 'row'>
+				Next by <%= next_post(@post.id).author.split(" ").first%>
+			</div>
+		<% end %>
+	</div>
+</div>

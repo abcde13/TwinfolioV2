@@ -7,17 +7,19 @@
 		<div class = "col-9" id="nav_title">
 			Twinfolio
 		</div>
-		<div id="nav_title_full">
-			Twinfolio: For Whom My Knee Tolls
+		<div id="nav_title_full" class = "row">
+				<div class = "col-2 bubble"><%= link_to "All posts", root_path, :id => 'home_bubble' %></div>
+				<div class = "col-8">Twinfolio: For Whom My Knee Tolls</div>
+				<div class = "col-2 bubble"><%= link_to "Other", other_path, :id => 'other_bubble'%></div>
 		</div>
 	</div>
 	<div class="row" id="nav_container">
 		<ul>
-			<li><%= link_to "Home", root_path %></li>
 			<li><%= link_to "Joraaver's posts", joraaver_posts_path %></li>
 			<li><%= link_to "Suchaaver's posts", suchaaver_posts_path %></li>
 			<li><%= link_to "About/Contact us", new_contact_path %></li>
-			<li><%= link_to "Other", other_path %></li>
+			<li class = "media_nav"><%= link_to "All posts", root_path %></li>
+			<li class = "media_nav"><%= link_to "Other", other_path %></li>
 		</ul>
 	</div>
 </nav>

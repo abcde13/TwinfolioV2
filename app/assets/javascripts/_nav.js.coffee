@@ -12,6 +12,6 @@ checkFooter = ->
   		false	
 		
 
-$(document).on('ready page:load', checkFooter)
+$(document).on('ready resize page:load', checkFooter)
 
 

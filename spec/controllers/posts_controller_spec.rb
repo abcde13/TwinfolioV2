@@ -52,10 +52,11 @@ describe PostsController do
 			assert_select("a[href=/posts/joraaver]","Joraaver&#39;s posts")
 			assert_select("a[href=/posts/suchaaver]","Suchaaver&#39;s posts")
 			assert_select("a[href=/other]","Other")
-			assert_select("a[href=/]","Home")
+			assert_select("a[href=/]","All posts")
 			assert_select("a[href=/contacts/new]","About/Contact us")
 		end
 	end
+
 	describe "not logged in" do
 		before {@post  = Post.create(:author => 'Joraaver', :text => 'test', :title => 'Day 3')  }
 		it "should not be able to access posts/new" do
@@ -67,6 +68,7 @@ describe PostsController do
 			response.should redirect_to posts_path
 		end
 	end
+		
 
   describe "GET New" do
     it "receives 200 OK" do

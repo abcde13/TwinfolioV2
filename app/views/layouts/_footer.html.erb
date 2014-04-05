@@ -1,0 +1,11 @@
+
+
+<div class = "footer row">
+	<div class = "footer_name">Twinfolio</div>
+	<% if current_user == nil %>
+		<%= link_to 'Metadata', new_session_path, :class => "meta_link" %>
+	<% else %>
+		<%= link_to 'Logout', '/logout', :class => "meta_link" %>
+	<% end %>
+</div>
+	
