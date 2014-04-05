@@ -7,13 +7,16 @@
 $title_padding: 5px;
 
 .to_top {
+	position: fixed;
 	width: 0; 
 	height: 0; 
 	border-right: 25px solid transparent; 
 	border-left: 25px solid transparent; 
 	border-bottom: 60px solid $blue-hue;
-	position: absolute;
-	//bottom: -4000;
+	bottom: 4em;
+	opacity: 0;
+	cursor: pointer;
+	
 }
 .margins{
 	text-align:center;
@@ -25,6 +28,7 @@ $title_padding: 5px;
 		border-top: 25px solid transparent; 
 		border-right: 60px solid $blue-hue; 
 		border-bottom: 25px solid transparent;
+	
 	
 	}
 	.right{
